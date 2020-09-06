@@ -1,4 +1,4 @@
-# Joint-Models /Bayesian Design of Clinical Trials Using Joint Models for Longitudinal and Time-to-event Data
+# Programs used in "Bayesian Design of Clinical Trials Using Joint Models for Longitudinal and Time-to-event Data"
 
 PH.R         -- R code for fitting piecewise proportional hazard models. This code is for all cases where a piecewise PH model is fitted
 
