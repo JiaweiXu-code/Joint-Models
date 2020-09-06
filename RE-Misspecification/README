@@ -1,0 +1,8 @@
+
+JM.sas     -- SAS program that fits a joint model with a random intercept.
+
+SJM.sas    -- SAS program that fits a simplified joint model without random effects.
+
+TrueJM.sas -- SAS program that fits a joint model with a random intercept and a random slope.
+
+Note: The default setting of a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function is used.
