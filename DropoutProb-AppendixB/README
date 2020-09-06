@@ -1,1 +1,1 @@
-git rm
+Both the data generation and model fitting processes used the same code as in ./MainResults-Figures2&3 with dropout probability varying in {0.05,0.10,0.20}.
