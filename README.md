@@ -19,7 +19,7 @@ power.sas     -- SAS program that computes the estimated Bayesian type I error r
 estimates.sas -- SAS program that computes the average parameter estimates based on the joint models. This program is for all cases where joint models with/without are fitted.
 
 
-
+-------------------------------------------------------------------------------------------------
 Inputs in "dataset.R" for data simulation --
  
 v        -- number of events
@@ -68,6 +68,7 @@ tpoints  -- scheduled time points (years) at which longitudinal outcomes are mea
 
 
 
+--------------------------------------------------------------------------------------------------
 Outputs from "dataset.R" of simulated data --
 
 ID         -- patient ID
