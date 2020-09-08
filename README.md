@@ -87,7 +87,7 @@ nodegrp    -- lymph node group, binary baseline covariate (1 = more severe group
 
 sim        -- ID for simulated data
 
-t          -- follow-up time (years) since enrollment
+s          -- follow-up time (years) since enrollment
 
 sr         -- follow-up time (years) since trial started
 
