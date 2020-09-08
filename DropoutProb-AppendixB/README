@@ -1,1 +1,2 @@
-Both the data generation and model fitting processes used the same code as in ./MainResults-Figures2&3 with dropout probability varying in {0.05,0.10,0.20}.
+Both the data generation and model fitting processes used the same code as in ./MainResults-Figures2&3 with dropout probability "censorp" varying in {0.05,0.10,0.20}.
+We took association parameter "beta" = -0.3, direct treatment effect "alpha[1]" = -0.2 and "pinter" = c(0.2,0.2,0.2,0.2).
