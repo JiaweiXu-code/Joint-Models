@@ -102,7 +102,7 @@ OUTPUTS (from "dataset.R" of simulated data):
 Description: Contains all programs to generate the results in Section 3.1.
 
 α(first element in alpha) = 0.0 | γ (pinter) = {0.0,0.0,0.0,0.0} | γ (pinter) = {0.2,0.2,0.2,0.2} | γ (pinter) = {0.4,0.3,0.2,0.1} 
---- | --- | --- | --- 
+--- | --- | --- |  
 β(beta) = -0.15 | 2.75 | 2.80 | 2.80 
 --- | --- | --- | --- 
 β(beta) = -0.30 | 2.55 | 2.70 | 2.70
