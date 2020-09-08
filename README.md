@@ -97,12 +97,19 @@ OUTPUTS (from "dataset.R" of simulated data):
 
 
 
--------------- Folder MainResults-Figures2&3 -----------------
+-------------------------------------- Folder MainResults-Figures2&3 -----------------------------------
 
-Description: Contains all programs and scripts to generate the results in Section 3.1.
+Description: Contains all programs to generate the results in Section 3.1.
 
+Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
 
-		 
+α_trt(first element in alpha) = 0.0	γ (pinter) = {0.0,0.0,0.0,0.0}	γ (pinter) = {0.2,0.2,0.2,0.2}	γ (pinter) = {0.4,0.3,0.2,0.1}
+β(beta) = -0.15	2.75	2.80	2.80
+β(beta) = -0.30	2.55	2.70	2.70
+β(beta) = -0.45	2.40	2.60	2.60
+
 dataset.R     -- R code for dataset generation. Data structure or paramter settings can be different under different scenarios. 
                  Thus, the correspoding dataset.R code will be found under different folders.
 
