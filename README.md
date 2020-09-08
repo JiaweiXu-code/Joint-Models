@@ -66,6 +66,8 @@ alpha    -- direct effects of treatment and baseline convariate on time-to-event
 
 tpoints  -- scheduled time points (years) at which longitudinal outcomes are measured
 
+mk       -- ratio between standard deviations of random slope and random intercept when used in random effect misspecification
+
 
 
 --------------------------------------------------------------------------------------------------
