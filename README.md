@@ -1,6 +1,46 @@
-# Programs used in "Bayesian Design of Clinical Trials Using Joint Models for Longitudinal and Time-to-event Data"
+# Software for paper "Bayesian Design of Clinical Trials Using Joint Models for Longitudinal and Time-to-event Data" by Xu et al.
 
-ssd.R         -- R code for sample size determination by varying the ratio between sample size and event total to obtain specified number of events in a specified interval of time                  on average. This code should be run before each data generation process to determine the desired sample size.
+-------------------------------------------------------------------------------------------------------------------------------------
+
+All programs are setup to be executed on a Linux computing cluster using R (3.6.0) or SAS (9.4). The paths referenced in all programs will need to be updated for the code to work. Once all paths are updated, one can use the SLURM scheduler shell scripts to submit jobs on a SLURM-based computing cluster. 
+
+
+-------------------------- RUN ORDER ------------------------------
+
+[1] ssd.sh -- Determine the desired sample size such that a specified number of events is obtained in a specified interval of time on average. This process is performed based on 1,000 simulations and calls the R program "ssd.R" which performs a single simulation. The "ssd.R" code requires the following inputs:
+
+   (1)  integer - seed - seed for a single simulation
+   (2)  integer - v    - number of events
+   (3)  double  - k    - ratio between number of enrolled patients and event total
+   (4)  integer - nlinear - number of intervals for peicewise linear trajectory
+   (5)  integer - measures
+   (6)  integer - npieces 
+   (7)  double  - eta
+   (8)  double  - maxt 
+   (9)  double  - censor 
+   (10) double  - censorp = 0.05, 
+   (11) double  - interval = 0.001, 
+   (12) vector (dbl) - pknots = c(0.25,0.75,1.25), 
+   (13) vector (dbl) - knots = c(1.91, 2.43, 3.00, 3.80), 
+   (14) double      - sigma = 0.65642581, 
+   (15) vector (dbl) - p = c(0.5,0.5), 
+   (16) double - mSigma = 0.71202084, 
+   (17) vector (dbl) - gamma = c(0.26634693,0,-0.03393003),
+   (18) vector (dbl) - plinear = c(-0.31869067,
+   (19) vector (dbl) - pinter = c(0.0,
+   (20) vector (dbl) - llambda = c(-3.61388568,
+   (21) double - beta = -0.15,
+   (22) vector (dbl) - alpha = c(-0.2,
+   (23) vector (dbl) - tpoints 
+
+
+
+
+-------------- Folder MainResults-Figures2&3 -----------------
+
+Description: Contains all programs and scripts to generate the results in Section 3.1.
+
+
 		 
 dataset.R     -- R code for dataset generation. Data structure or paramter settings can be different under different scenarios. 
                  Thus, the correspoding dataset.R code will be found under different folders.
