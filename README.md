@@ -5,35 +5,35 @@
 All programs are setup to be executed on a Linux computing cluster using R (3.6.0) or SAS (9.4). The paths referenced in all programs will need to be updated for the code to work. Once all paths are updated, one can use the SLURM scheduler shell scripts to submit jobs on a SLURM-based computing cluster. 
 
 
--------------------------- RUN ORDER ------------------------------
+--------------------------------------------------- RUN ORDER ------------------------------------------------
 
 [1] ssd.sh -- Determine the desired sample size such that a specified number of events is obtained in a specified interval of time on average. This process is performed based on 1,000 simulations and calls the R program "ssd.R" which performs a single simulation. The "ssd.R" code requires the following inputs:
 
-   (1)  integer - seed - seed for a single simulation
-   (2)  integer - v    - number of events
-   (3)  double  - k    - ratio between number of enrolled patients and event total
-   (4)  integer - nlinear - number of intervals for peicewise linear trajectory
-   (5)  integer - measures
-   (6)  integer - npieces 
-   (7)  double  - eta
-   (8)  double  - maxt 
-   (9)  double  - censor 
-   (10) double  - censorp = 0.05, 
-   (11) double  - interval = 0.001, 
-   (12) vector (dbl) - pknots = c(0.25,0.75,1.25), 
-   (13) vector (dbl) - knots = c(1.91, 2.43, 3.00, 3.80), 
-   (14) double      - sigma = 0.65642581, 
-   (15) vector (dbl) - p = c(0.5,0.5), 
-   (16) double - mSigma = 0.71202084, 
-   (17) vector (dbl) - gamma = c(0.26634693,0,-0.03393003),
-   (18) vector (dbl) - plinear = c(-0.31869067,
-   (19) vector (dbl) - pinter = c(0.0,
-   (20) vector (dbl) - llambda = c(-3.61388568,
-   (21) double - beta = -0.15,
-   (22) vector (dbl) - alpha = c(-0.2,
-   (23) vector (dbl) - tpoints 
+   (1)  integer      - seed     - seed for a single simulation 
+   (2)  integer      - v        - number of events 
+   (3)  double       - k        - ratio between number of enrolled patients and event total 
+   (4)  integer      - nlinear  - number of intervals for peicewise linear trajectory 
+   (5)  integer      - measures - number of scheduled longitudinal measurements 
+   (6)  integer      - npieces  - number of intervals for piecewise constant baseline hazard function 
+   (7)  double       - eta      - period of time (years) for patient enrollment 
+   (8)  double       - maxt     - maximum follow-up time (years) under ideal cases (i.e., no dropout or censoring) 
+   (9)  double       - censor   - period of time (years) for dropout 
+   (10) double       - censorp  - dropout probability 
+   (11) double       - interval - length of interval for discretization to simulate survival time 
+   (12) vector (dbl) - pknots   - knots placement for piecewise linear trajectory 
+   (13) vector (dbl) - knots    - knots placement for piecewise constant baseline hazard function 
+   (14) double       - sigma    - standard deviation of measurement error
+   (15) vector (dbl) - p        - allocation probabilities for treatment and baseline covariates 
+   (16) double       - mSigma   - standard deviation or covariance matrix of random effects 
+   (17) vector (dbl) - gamma    - regression coefficients of intercept, treatment indicator and baseline covariates in longitudinal process 
+   (18) vector (dbl) - plinear  - coefficients for time covariates in longitudinal process
+   (19) vector (dbl) - pinter   - coefficients for interactions between treatment and time covariates in longitudinal process
+   (20) vector (dbl) - llambda  - piecewise constant baseline hazards in log scale
+   (21) double       - beta     - association parameter
+   (22) vector (dbl) - alpha    - direct effects of treatment and baseline convariate on time-to-event endpoint
+   (23) vector (dbl) - tpoints  - scheduled time points (years) at which longitudinal outcomes are measured
 
-
+OUTPUTS (by order): Seed, trial duration, sample size, event total
 
 
 -------------- Folder MainResults-Figures2&3 -----------------
