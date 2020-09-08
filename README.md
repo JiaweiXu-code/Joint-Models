@@ -7,7 +7,7 @@ All programs are setup to be executed on a Linux computing cluster using R (3.6.
 
 --------------------------------------------------- RUN ORDER ------------------------------------------------
 
-[1] ssd.sh -- Determine the desired sample size such that a specified number of events is obtained in a specified interval of time on average. This process is performed based on 1,000 simulations and calls the R program "ssd.R" which performs a single simulation. The "ssd.R" code requires the following inputs:
+[1] ssd.sh -- Determine the desired sample size such that a specified number of events is obtained in a specified interval of time on average. This process is performed based on massive (e.g., 1,000) simulations and calls the R program "ssd.R" which performs a single simulation. The "ssd.R" code requires the following inputs:
 
    (1)  integer      - seed     - seed for a single simulation 
    
@@ -55,7 +55,46 @@ All programs are setup to be executed on a Linux computing cluster using R (3.6.
    
    (23) vector (dbl) - tpoints  - scheduled time points (years) at which longitudinal outcomes are measured
 
-OUTPUTS (by order): Seed, trial duration, sample size, event total
+OUTPUTS: Seed, trial duration, sample size, event total
+
+
+
+[2] mean.R -- Compute the average trial duration, sample size and event total based on the 1,000 simulations.
+
+[3] data_array.R -- Simulate the longitudinal and time-to-event data by calling the R program "dataset.R" which performs a single simulation and fit the joint models to the corresponding dataset by calling SAS programs starting with "JM" and "SJM". The "dataset.R" code requires the same inputs as for "ssd.R". The example code for "dataset.R" simulates 50 datasets in a single run and event total automatically increases once the number of datasets hits the requirement (i.e., 4,000).
+
+OUTPUTS (from "dataset.R" of simulated data):
+
+   (1)  integer - ID        - patient ID
+
+   (2)  double - measure    - longitudinal measures
+
+   (3)  double - time       - measurement time (years) since enrollment
+
+   (4)  binary - trt        - treatment indicator (1 = treated, 0 = control)
+
+   (5)  double - toltime    - measurement time (years) since trial started
+
+   (6)  binary - nodegrp    - lymph node group, binary baseline covariate (1 = more severe group, 0 = less severe group)
+
+   (7)  integer - sim       - ID for simulated data
+
+   (8)  double - s          - follow-up time (years) since enrollment
+
+   (9)  double - sr         - follow-up time (years) since trial started
+
+   (10) double - r0         - enrollment time (years)
+
+   (11) binary - censorship - indicator for censoring (1 = event, 0 = censored)
+   
+   
+   
+[4] power.sas -- Estimate the Bayesian type I error rate or power by event total based on joint models.
+
+[5] logrank.sas -- Estimate the type I error rate or power by event total based on log-rank test.
+
+[6] PH.R -- Estimate the type I error rate or power by event total based on piecewise proportional hazard model.
+
 
 
 -------------- Folder MainResults-Figures2&3 -----------------
@@ -133,26 +172,4 @@ mk       -- ratio between standard deviations of random slope and random interce
 
 
 --------------------------------------------------------------------------------------------------
-Outputs from "dataset.R" of simulated data --
 
-ID         -- patient ID
-
-measure    -- longitudinal measures
-
-time       -- measurement time (years) since enrollment
-
-trt        -- treatment indicator (1 = treated, 0 = control)
-
-toltime    -- measurement time (years) since trial started
-
-nodegrp    -- lymph node group, binary baseline covariate (1 = more severe group, 0 = less severe group)
-
-sim        -- ID for simulated data
-
-s          -- follow-up time (years) since enrollment
-
-sr         -- follow-up time (years) since trial started
-
-r0         -- enrollment time (years)
-
-censorship -- indicator for censoring (1 = event, 0 = censored)
