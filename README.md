@@ -132,12 +132,39 @@ Table2: Ratios (k) used for data generation in Figure 3.
 
 ----------------------------------------- Folder Trajectory-Misspecification --------------------------------------
 
+Description: This folder contains data generation and model fitting programs for results in Section 3.2. 
+
+dataset-leveloff.R  -- Simulate data where the trajectory for treated group increases initially but levels off over time. A 6-component piecewise linear trajectory is assumed.
+
+dataset-concave.R   -- Simulate data where the trajectory for treated group increases initially and subsequently decreases. A 6-component piecewise linear trajectory is assumed.
+
+JM3.sas             -- Fit a joint model with random intercept. A 3-component piecewise linear trajectory is assumed.
+
+JM6.sas             -- Fit a joint model with random intercept. A 6-component piecewise linear trajectory is assumed.
+
+SJM3.sas            -- Fit a simplified joint model without random effects. A 3-component piecewise linear trajectory is assumed.
+
+SJM6.sas            -- Fit a simplified joint model without random effects. A 6-component piecewise linear trajectory is assumed.
+
+Trajectory-curves.R -- Compute the correct and average fitted trajectories for treated and control groups.
+
+Note: A 5-component piecewise constant baseline hazard function is used for all joint models.
 
 
 
 --------------------------------------------- Folder RE-Misspecification ------------------------------------------
 
+Description: This folder contains data generation and model fitting programs for results in Section 3.3. 
 
+dataset.R  -- Simulate data where patient-level heterogeneity is based on a random intercept and a random slope. The two random effects are assumed to be independent.
+
+JM.sas     -- Fit a joint model with a random intercept.
+
+SJM.sas    -- Fit a simplified joint model without random effects.
+
+TrueJM.sas -- Fit a joint model with a random intercept and a random slope.
+
+Note: The default setting of a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function is used.
 
 
 
