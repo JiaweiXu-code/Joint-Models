@@ -1,12 +1,12 @@
 
-JM3.sas             -- SAS program that fits a joint model with a random intercept. A 3-component piecewise linear trajectory is assumed.
+JM3.sas             -- Fit a joint model with random intercept. A 3-component piecewise linear trajectory is assumed.
 
-JM6.sas             -- SAS program that fits a joint model with a random intercept. A 6-component piecewise linear trajectory is assumed.
+JM6.sas             -- Fit a joint model with random intercept. A 6-component piecewise linear trajectory is assumed.
 
-SJM3.sas            -- SAS program that fits a simplified joint model without random effects. A 3-component piecewise linear trajectory is assumed.
+SJM3.sas            -- Fit a simplified joint model without random effects. A 3-component piecewise linear trajectory is assumed.
 
-SJM6.sas            -- SAS program that fits a simplified joint model without random effects. A 6-component piecewise linear trajectory is assumed.
+SJM6.sas            -- Fit a simplified joint model without random effects. A 6-component piecewise linear trajectory is assumed.
 
-Trajectory-curves.R -- R code that computes the correct and average fitted trajectories for treated and control groups.
+Trajectory-curves.R -- Compute the correct and average fitted trajectories for treated and control groups.
 
 Note: A 5-component piecewise constant baseline hazard function is used for all joint models.
