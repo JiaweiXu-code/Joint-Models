@@ -54,6 +54,8 @@ All programs are setup to be executed on a Linux computing cluster using R (3.6.
    (22) vector (dbl) - alpha    - direct effects of treatment and baseline convariate on time-to-event endpoint
    
    (23) vector (dbl) - tpoints  - scheduled time points (years) at which longitudinal outcomes are measured
+   
+   (24) double       - mk       - ratio between standard deviations of random slope and random intercept when used in random effect misspecification
 
 OUTPUTS: Seed, trial duration, sample size, event total
 
@@ -89,7 +91,7 @@ OUTPUTS (from "dataset.R" of simulated data):
    
    
    
-[4] power.sas -- Estimate the Bayesian type I error rate or power by event total based on joint models.
+[4] power.sas -- Estimate the Bayesian type I error rate or power by event total using the estimated avarage hazard ratios based on joint models.
 
 [5] logrank.sas -- Estimate the type I error rate or power by event total based on log-rank test.
 
@@ -97,86 +99,71 @@ OUTPUTS (from "dataset.R" of simulated data):
 
 
 
--------------------------------------- Folder MainResults-Figures2&3 -----------------------------------
 
-Description: Contains all programs to generate the results in Section 3.1.
+----------------------------------------- Folder MainResults-Figures2&3 --------------------------------------
+
+Description: This folder contains data generation and model fitting programs for results in Section 3.1. 
+
+dataset.R -- Simulate datasets under the assumptions of a random intercept for heterogeneity, a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function. 
+
+JM.sas -- Fit the proposed joint model with a random intercept, a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function. 
+
+SJM.sas -- Fit the simplified joint model that omits the random effects with a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function. 
+
+The ratios between sample size and event total used in the paper for data generation can be found below:
+
+Table1: Ratios (k) used for data generation in Figure 2.
 
 | α(first element in alpha) = 0.0 | γ (pinter) = {0.0,0.0,0.0,0.0} | γ (pinter) = {0.2,0.2,0.2,0.2} | γ (pinter) = {0.4,0.3,0.2,0.1} |
---- | --- | --- | ---
-β(beta) = -0.15 | 2.75 | 2.80 | 2.80 
---- | --- | --- | ---
-β(beta) = -0.30 | 2.55 | 2.70 | 2.70
---- | --- | --- | ---
-β(beta) = -0.45 | 2.40 | 2.60 | 2.60
+| --- | --- | --- | --- |
+| β(beta) = -0.15 | 2.75 | 2.80 | 2.80 |
+| β(beta) = -0.30 | 2.55 | 2.70 | 2.70 |
+| β(beta) = -0.45 | 2.40 | 2.60 | 2.60 |
+
+Table2: Ratios (k) used for data generation in Figure 3.
+
+| α(first element in alpha) = -0.2 | γ (pinter) = {0.0,0.0,0.0,0.0} | γ (pinter) = {0.2,0.2,0.2,0.2} | γ (pinter) = {0.4,0.3,0.2,0.1} |
+| --- | --- | --- | --- |
+| β(beta) = -0.15 | 2.95 | 3.05 | 3.00 |
+| β(beta) = -0.30 | 2.75 | 2.90 | 2.90 |
+| β(beta) = -0.45 | 2.70 | 2.80 | 2.75 |
 
 
-dataset.R     -- R code for dataset generation. Data structure or paramter settings can be different under different scenarios. 
-                 Thus, the correspoding dataset.R code will be found under different folders.
 
-JM.sas        -- Any SAS program starts with "JM" fits a joint models with a random intercept, with default of a 4-component piecewise linear time trajectory and a 5-component                      piecewise constant baseline hazard function. Interpretation of different settings can be found in the README file under the correspoding folder.
+----------------------------------------- Folder Trajectory-Misspecification --------------------------------------
 
-SJM.sas       -- Any SAS program starts with "SJM" fits a simplified joint model without random effects, with default of a 4-component piecewise linear time trajectory and a 5-                    component piecewise constant baseline hazard function. Interpretation of different settings can be found in the README file under the correspoding folder.
 
-PH.R          -- R code that fits a piecewise proportional hazard models. This code is for all cases where a piecewise PH model is fitted
 
-logrank.sas   -- SAS program that runs a log-rank tests. This program is for all cases where a log-rank test is applied.
 
-power.sas     -- SAS program that computes the estimated Bayesian type I error rate and power curves after obtaining avarage hazard ratios based on all simulated datasets.
-                 This program is for all cases where Bayesian type I error rate or power should be computed based on joint models. 
+--------------------------------------------- Folder RE-Misspecification ------------------------------------------
+
+
+
+
+
+--------------------------------------------- Folder DropoutProb-AppendixB ----------------------------------------
+
+
+
+
+------------------------------------------- Folder SurvivalCurves-AppendixD ---------------------------------------
+
+
+
+
+
+------------------------------------------- Folder Heterogeneity-AppendixE ----------------------------------------
+
+
+
+
+--------------------------------------------- Folder Overfitting-AppendixF ----------------------------------------
+
+
+
+
 
 estimates.sas -- SAS program that computes the average parameter estimates based on the joint models. This program is for all cases where joint models with/without are fitted.
 
 
--------------------------------------------------------------------------------------------------
-Inputs in "dataset.R" for data simulation --
- 
-v        -- number of events
-
-k        -- ratio between number of patients and event total
-
-nlinear  -- number of intervals for peicewise linear trajectory
-
-measures -- number of scheduled longitudinal measurements
-
-npieces  -- number of intervals for piecewise constant baseline hazard function
-
-eta      -- period of time (years) for patient enrollment
-
-maxt     -- maximum follow-up time (years) under ideal cases (i.e., no dropout or censoring)
-
-censor   -- period of time (years) for dropout
-
-censorp  -- dropout probability
-
-interval -- length of interval for discretization to simulate survival time
-
-pknots   -- knots placement for piecewise linear trajectory
-
-knots    -- knots placement for piecewise constant baseline hazard function
-
-sigma    -- standard deviation of measurement error
-
-p        -- allocation probabilities for treatment and baseline covariates 
-
-mSigma   -- standard deviation or covariance matrix of random effects
-
-gamma    -- regression coefficients of intercept, treatment indicator and baseline covariates in longitudinal process 
-
-plinear  -- coefficients for time covariates in longitudinal process
-
-pinter   -- coefficients for interactions between treatment and time covariates in longitudinal process
-
-llambda  -- piecewise constant baseline hazards in log scale
-
-beta     -- association parameter
-
-alpha    -- direct effects of treatment and baseline convariate on time-to-event endpoint
-
-tpoints  -- scheduled time points (years) at which longitudinal outcomes are measured
-
-mk       -- ratio between standard deviations of random slope and random intercept when used in random effect misspecification
-
-
-
---------------------------------------------------------------------------------------------------
 
