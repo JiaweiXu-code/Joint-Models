@@ -95,8 +95,7 @@ OUTPUTS (from "dataset.R" of simulated data):
 
 [5] logrank.sas -- Estimate the type I error rate or power by event total based on log-rank test.
 
-[6] PH.R -- Estimate the type I error rate or power by event total based on piecewise proportional hazard model.
-
+[6] PH.R -- Estimate the type I error rate or power by event total based on piecewise proportional hazard model. The average parameter estimates are also computed.
 
 
 
@@ -104,7 +103,7 @@ OUTPUTS (from "dataset.R" of simulated data):
 
 Description: This folder contains data generation and model fitting programs for results in Section 3.1. 
 
-dataset.R -- Simulate datasets under the assumptions of a random intercept for heterogeneity, a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function. 
+dataset.R -- Simulate data where patient-level heterogeneity is based on a random intercept. A 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function is assumed. 
 
 JM.sas -- Fit the proposed joint model with a random intercept, a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function. 
 
@@ -129,7 +128,6 @@ Table2: Ratios (k) used for data generation in Figure 3.
 | β(beta) = -0.45 | 2.70 | 2.80 | 2.75 |
 
 
-
 ----------------------------------------- Folder Trajectory-Misspecification --------------------------------------
 
 Description: This folder contains data generation and model fitting programs for results in Section 3.2. 
@@ -148,15 +146,14 @@ SJM6.sas            -- Fit a simplified joint model without random effects. A 6-
 
 Trajectory-curves.R -- Compute the correct and average fitted trajectories for treated and control groups.
 
-Note: A 5-component piecewise constant baseline hazard function is used for all joint models.
-
+Note: Patient-level heterogeneity is based on a random intercept. A 5-component piecewise constant baseline hazard function is used for both data generation and model fitting.
 
 
 --------------------------------------------- Folder RE-Misspecification ------------------------------------------
 
 Description: This folder contains data generation and model fitting programs for results in Section 3.3. 
 
-dataset.R  -- Simulate data where patient-level heterogeneity is based on a random intercept and a random slope. The two random effects are assumed to be independent.
+dataset.R  -- Simulate data where patient-level heterogeneity is based on a random intercept and a random slope. The two random effects are assumed to be independent. Ratio between standard deviations of random slope and random intercept "mk" varies in {0.25,0.50}.
 
 JM.sas     -- Fit a joint model with a random intercept.
 
@@ -164,33 +161,65 @@ SJM.sas    -- Fit a simplified joint model without random effects.
 
 TrueJM.sas -- Fit a joint model with a random intercept and a random slope.
 
-Note: The default setting of a 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function is used.
-
+Note: A 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function is used for both data generation and model fitting.
 
 
 --------------------------------------------- Folder DropoutProb-AppendixB ----------------------------------------
 
+Description: This folder contains data generation and model fitting programs for results in Appendix B of the Supplementary Materials. 
 
+dataset.R  -- Simulate data where patient-level heterogeneity is based on a random intercept. The dropout probability "censorp" varies in {0.05,0.10,0.20}.
+
+JM.sas     -- Fit a joint model with a random intercept.
+
+SJM.sas    -- Fit a simplified joint model without random effects.
+
+Note: A 4-component piecewise linear trajectory and a 5-component piecewise constant baseline hazard function is used for both data generation and model fitting.
 
 
 ------------------------------------------- Folder SurvivalCurves-AppendixD ---------------------------------------
 
+Description: This folder contains programs to plot Figure2 in Appendix D of the Supplementary Materials. 
 
+survival_curves.R -- Compute the estimated survival curves based on parameter estimates from proposed joint model.
 
+Surv_plot.sas     -- Plot survival curves for treated and control groups using the estimated survival probabilities from "survival_curves.R".
 
 
 ------------------------------------------- Folder Heterogeneity-AppendixE ----------------------------------------
 
+Description: This folder contains data generation and model fitting programs for results in Appendix E of the Supplementary Materials. 
 
+dataset.R     -- Simulate data where patient-level heterogeneity is based on a random intercept. The standard deviation of random intercept varies in {0.000,0.356,0.712}.
+
+JM.sas        -- Fit a joint model with a random intercept.
+
+SJM.sas       -- Fit a simplified joint model without random effects.
+
+estimates.sas -- Compute the average parameter estimates based on the joint models. 
+
+Note: A linear time trajectory and constant baseline hazard function is used for both data generation and model fitting.
 
 
 --------------------------------------------- Folder Overfitting-AppendixF ----------------------------------------
 
+Description: This folder contains data generation and model fitting programs for results in Appendix F of the Supplementary Materials. 
 
+dataset.R          -- Simulate data where patient-level heterogeneity is based on a random intercept. A linear time trajectory and constant baseline hazard function is assumed.
 
+JM-none.sas        -- Fit a joint model with a random intercept. A linear trajectory and a constant baseline hazard function is used. 
 
+JM-BL.sas          -- Fit a joint model with a random intercept. A linear trajectory and a piecewise constant baseline hazard function is used. 
 
-estimates.sas -- SAS program that computes the average parameter estimates based on the joint models. This program is for all cases where joint models with/without are fitted.
+JM-trajectory.sas  -- Fit a joint model with a random intercept. A piecewise linear trajectory and a constant baseline hazard function is used. 
 
+JM-both.sas        -- Fit a joint model with a random intercept. A piecewise linear trajectory and a piecewise constant baseline hazard function is used. 
 
+SJM-none.sas       -- Fit a simplified joint model without random effects. A linear trajectory and a constant baseline hazard function is used. 
+
+SJM-BL.sas         -- Fit a simplified joint model without random effects. A linear trajectory and a piecewise constant baseline hazard function is used. 
+
+SJM-trajectory.sas -- Fit a simplified joint model without random effects. A piecewise linear trajectory and a constant baseline hazard function is used. 
+
+SJM-both.sas       -- Fit a simplified joint model without random effects. A piecewise linear trajectory and a piecewise constant baseline hazard function is used. 
 
