@@ -9,7 +9,7 @@ All programs are setup to be executed on a Linux computing cluster using R (3.6.
 
 [1] ssd.sh -- Determine the desired sample size such that a specified number of events is obtained in a specified interval of time on average. This process is performed based on massive (e.g., 1,000) simulations and calls the R program "ssd.R" which performs a single simulation. The "ssd.R" code requires the following inputs:
 
-   (1)  integer      - seed     - seed for a single simulation 
+   (1)  integer      - seed     - seed for a single simulation (e.g., 1-1,000 for sample size determination and 1-4,000 for data generation)
    
    (2)  integer      - v        - number of events 
    
@@ -63,7 +63,7 @@ OUTPUTS: Seed, trial duration, sample size, event total
 
 [2] mean.R -- Compute the average trial duration, sample size and event total based on the 1,000 simulations.
 
-[3] data_array.R -- Simulate the longitudinal and time-to-event data by calling the R program "dataset.R" which performs a single simulation and fit the joint models to the corresponding dataset by calling SAS programs starting with "JM" and "SJM". The "dataset.R" code requires the same inputs as for "ssd.R". The example code for "dataset.R" simulates 50 datasets in a single run and event total automatically increases once the number of datasets hits the requirement (i.e., 4,000).
+[3] data_array.R -- Simulate the longitudinal and time-to-event data by calling the R program "dataset.R" which performs a single simulation and fit the joint models to the corresponding dataset by calling SAS programs starting with "JM" and "SJM". The "dataset.R" code requires the same inputs as for "ssd.R". The example code for "dataset.R" simulates 50 datasets in a single run and event total automatically increases once the number of datasets hits the requirement (e.g., 4,000).
 
 OUTPUTS (from "dataset.R" of simulated data):
 
